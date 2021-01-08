@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Clock.cs" />
+     <Compile Include="Assets\Scripts\Graph.cs" />
  <Reference Include="Unity.Rider.Editor">
  <HintPath>G:/github/UnityProjects/catlike/1_1_Clock/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>

@@ -13,8 +13,8 @@ public class Clock : MonoBehaviour
     private void Update()
     {
         time = DateTime.Now.TimeOfDay;
-        hoursPivot.localRotation = Quaternion.Euler(0, 0, hoursToDegrees * (float)time.TotalHours);
-        minutesPivot.localRotation = Quaternion.Euler(0, 0, minutesToDegrees * (float)time.TotalMinutes);
-        secondsPivot.localRotation = Quaternion.Euler(0, 0, secondsToDegrees * (float)time.TotalSeconds);
+        hoursPivot.localRotation = Quaternion.Euler(0, 0, hoursToDegrees * (float) time.TotalHours);
+        minutesPivot.localRotation = Quaternion.Euler(0, 0, minutesToDegrees * (float) time.TotalMinutes);
+        secondsPivot.localRotation = Quaternion.Euler(0, 0, secondsToDegrees * (float) time.TotalSeconds);
     }
 }
