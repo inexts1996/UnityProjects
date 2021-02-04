@@ -3,14 +3,14 @@
 public class Graph : MonoBehaviour
 {
     [SerializeField] private Transform pointPrefab;
-    [SerializeField, Range(10, 100)] private int resolution = 20;
+    [SerializeField] [Range(10, 100)] private int resolution = 20;
     private GameObject _root;
 
     private void Awake()
     {
         _root = new GameObject("root");
-        float step = 2f / resolution;
-        Vector3 position = Vector3.zero * step;
+        var step = 2f / resolution;
+        var position = Vector3.zero * step;
         Transform point;
         Vector3 scale;
         scale = Vector3.one * step;
@@ -18,7 +18,7 @@ public class Graph : MonoBehaviour
         {
             point = Instantiate(pointPrefab);
             position.x = (i + 0.5f) * step - 1f;
-            position.y = position.x * position.x;
+            position.y = position.x * position.x * position.x;
             point.localPosition = position;
             point.localScale = scale;
             point.SetParent(_root.transform, false);
