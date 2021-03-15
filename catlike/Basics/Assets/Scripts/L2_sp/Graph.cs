@@ -1,50 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
-	[SerializeField]
-	Transform pointPrefab = default;
-	[SerializeField, Range(10, 100)]
-	int resolution = 10;
+    [SerializeField] private Transform pointPrefab;
+
+    [SerializeField] [Range(10, 100)] private int resolution = 10;
+
+    [SerializeField] [Range(0, 1)] private int function;
     // Start is called before the first frame update
-	
-		Transform[] points;
-	void Awake()
-	{
-		float step = 2f / resolution;
-		var scale = Vector3.one * step;
-		var position = Vector3.zero;
-		points = new Transform[resolution];
-		Transform point;
 
-		for(int i = 0; i < resolution; ++i)
-		{
-			point = Instantiate(pointPrefab);
-			position.x=  (i + 0.5f) * step - 1f;
-			point.localPosition = position; 
-			point.localScale =scale;
-			point.SetParent(transform, false);
+    private Transform[] points;
 
-			points[i] = point;
-		}
-	}
-
-    void Start()
+    private void Awake()
     {
-        
+        var step = 2f / resolution;
+        var scale = Vector3.one * step;
+        var position = Vector3.zero;
+        points = new Transform[resolution];
+        Transform point;
+
+        for (var i = 0; i < resolution; ++i)
+        {
+            point = Instantiate(pointPrefab);
+            position.x = (i + 0.5f) * step - 1f;
+            point.localPosition = position;
+            point.localScale = scale;
+            point.SetParent(transform, false);
+
+            points[i] = point;
+        }
+    }
+
+    private void Start()
+    {
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-	    for (int i = 0; i <resolution; i++)
-	    {
-		    Transform point = points[i];
-		    Vector3 position = point.localPosition;
-		    position.y = Mathf.Sin(Mathf.PI * (position.x + Time.time));
-		    point.localPosition = position;
-	    } 
+        for (var i = 0; i < resolution; i++)
+        {
+            var point = points[i];
+            var position = point.localPosition;
+            if (function == 0)
+                position.y = FunctionLibrary.Ware(position.x, Time.time);
+            else
+                position.y = FunctionLibrary.MultiWare(position.x, Time.time);
+            point.localPosition = position;
+        }
     }
 }
