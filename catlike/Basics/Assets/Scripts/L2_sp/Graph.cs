@@ -47,7 +47,7 @@ public class Graph : MonoBehaviour
     private void Update()
     {
         func = FunctionLibrary.GetFunctionWith(function); 
-        for (var i = 0; i < resolution; i++)
+        for (var i = 0; i < resolution * resolution; i++)
         {
             var point = points[i];
             var position = point.localPosition;
