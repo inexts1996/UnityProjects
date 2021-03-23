@@ -15,22 +15,13 @@ public class Graph : MonoBehaviour
     {
         var step = 2f / resolution;
         var scale = Vector3.one * step;
-        var position = Vector3.zero;
         points = new Transform[resolution * resolution];
         int count = points.Length;
         Transform point;
 
         for (int i = 0, x = 0, z = 0; i < count; ++i, ++x)
         {
-            if (x >= resolution)
-            {
-                x = 0;
-                ++z;
-            }
             point = Instantiate(pointPrefab);
-            position.x = (x + 0.5f) * step - 1f;
-            position.z = (z + 0.5f) * step - 1f;
-            point.localPosition = position;
             point.localScale = scale;
             point.SetParent(transform, false);
 
@@ -46,14 +37,22 @@ public class Graph : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        func = FunctionLibrary.GetFunctionWith(function); 
-        for (var i = 0; i < resolution * resolution; i++)
-        {
-            var point = points[i];
-            var position = point.localPosition;
+        func = FunctionLibrary.GetFunctionWith(function);
 
-            position.y = func.Invoke(position.x, position.z, Time.time);
-            point.localPosition = position;
+        float time = Time.time;
+        float step = 2f / resolution;
+        float v =  0.5f * step - 1f;
+        for (int i = 0, x = 0, z = 0; i < points.Length; ++i, ++x)
+        {
+            if (x == resolution)
+            {
+                x = 0;
+                ++z;
+                v = (z + 0.5f) * step - 1f;
+            }
+
+            float u = (x + 0.5f) * step - 1f;
+            points[i].localPosition = func.Invoke(u, v, time);
         }
     }
 }
