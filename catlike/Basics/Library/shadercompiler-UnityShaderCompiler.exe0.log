@@ -1,2 +1,44 @@
 Base path: 'D:/Program Files/Unity 2019.4.10f1/Editor/Data', plugins path 'D:/Program Files/Unity 2019.4.10f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
+Cmd: preprocessCompute
+  insize=69 outsize=68 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at (0): Program 'FunctionKernel', error X3084: 'numthreads(X,Y,Z)' attribute expected, where 'X,Y,Z' are the dimensions of the thread group
+  api=4 insize=68 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=71 outsize=70 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at (0): Program 'FunctionKernel', error X3084: 'numthreads(X,Y,Z)' attribute expected, where 'X,Y,Z' are the dimensions of the thread group
+  api=4 insize=70 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=78 outsize=77 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at FunctionLibrary.compute(3): 'numthreads(X,Y,Z)' attribute expected, where 'X,Y,Z' are the dimensions of the thread group
+  error: 1 plat 4 at FunctionLibrary.compute(3): unknown attribute numth, or attribute invalid for this statement, valid attributes are: numthreads, RootSignature
+  api=4 insize=77 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=92 outsize=91 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=91 outsize=231 ok=1
+Cmd: preprocessCompute
+  insize=69 outsize=68 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at (0): Program 'FunctionKernel', error X3084: 'numthreads(X,Y,Z)' attribute expected, where 'X,Y,Z' are the dimensions of the thread group
+  api=4 insize=68 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=706 outsize=705 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=705 outsize=548 ok=1
+Cmd: preprocessCompute
+  insize=726 outsize=725 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=725 outsize=814 ok=1
+Cmd: preprocessCompute
+  insize=726 outsize=725 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at FunctionLibrary.compute(17): undeclared identifier '_resolution'
+  api=4 insize=725 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=726 outsize=725 ok=1
+Cmd: compileComputeKernel
+  api=4 insize=725 outsize=814 ok=1
